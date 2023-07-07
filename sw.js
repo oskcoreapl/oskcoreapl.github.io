@@ -2,7 +2,7 @@ var CACHE_NAME = 'omron-pwa-sample-caches';
 var urlsToCache = [
     '/',
     '/index.html',
-    '/index-pwa2.html',
+    '/index-2.html',
     '/app.js',
 ];
 
