@@ -4,6 +4,7 @@ var urlsToCache = [
     '/index.html',
     '/index-2.html',
     '/app.js',
+    '/camera.js',
 ];
 
 self.addEventListener('install', function(event) {
