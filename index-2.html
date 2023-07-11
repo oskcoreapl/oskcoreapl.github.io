@@ -10,6 +10,7 @@
 </head>
 <body>
 PWA Sample2
+<p>
     <input type="button" value="カメラ起動" onclick="openCamera();" id="playBtn">
     <video autoplay playsinline></video>
 
@@ -22,8 +23,39 @@ PWA Sample2
             });
         }
     </script>
+    
+    <script type="text/javascript">
+    var JSInterface;
+        function callNative(params) {
+            if (JSInterface == null){
+                alert("Not Native");
+            } else {
+                //document.getElementById('loaderDiv').style.display = "block";
+                return JSInterface.nativeBridgeCall(params.functionName, JSON.stringify(params));
+            }
+        }
 
-    <br>
+        /*!
+         * ダッシュボード遷移API
+         */
+        function moveToDashboard() {
+            // FunctionParams
+            var fxParams = {};
+            
+            var params = {};
+            params.functionName = "requestDashboard";
+            var result = callNative(params);
+            
+            if(result == true) {
+                console.log("requestDashboard Function Call Success");
+            }else {
+                document.getElementById('loaderDiv').style.display = "none";
+                console.log("requestDashboard Function Call  Error");
+            }
+        }
+    </script>
+        
+<p>
     <button id="confirm">push通知許可2</button>
     <script>
       document.getElementById('confirm').addEventListener('click', () => {
@@ -33,7 +65,7 @@ PWA Sample2
       });
     </script>
     
-    <br>
+<p>
     <button id="send">Notif送信する2</button>
     <script>
       // Notifの送信
@@ -45,6 +77,11 @@ PWA Sample2
         }
       });
     </script>
+
+<p>
+<p>
+<input type="button" value="moveToDashboard" onclick="moveToDashboard();"/>
+
 
 </body>
 </html>
