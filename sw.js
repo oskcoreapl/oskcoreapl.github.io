@@ -29,6 +29,7 @@ self.addEventListener('fetch', function(event) {
 self.addEventListener("push", (event) => {
   let data = event.data.text();
   data = JSON.parse(data);
+  console.log('catch push notification');
   const options = {
       body: data.body,
       icon: data.icon,
