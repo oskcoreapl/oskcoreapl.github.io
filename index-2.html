@@ -43,7 +43,7 @@ PWA Sample2 230725
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 messaging.useServiceWorker(registration);
                 messaging.requestPermission().then(() => {
-                    console.log("msg permitted.);
+                    console.log("msg permitted.");
                     messaging.getToken().then(token => {
                         console.log(token);
                     });
