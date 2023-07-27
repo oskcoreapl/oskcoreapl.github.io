@@ -7,6 +7,44 @@ var urlsToCache = [
     '/camera.js',
 ];
 
+importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js');
+
+firebase.initializeApp({
+  apiKey: 'AIzaSyCYdYr5rNUw6HoOyw3_Zw0ZVU4SjLrWXmc',
+  authDomain: 'samplecamera-b59f7.firebaseapp.com',
+  // databaseURL: 'https://project-id.firebaseio.com',
+  projectId: 'samplecamera-b59f7',
+  storageBucket: 'samplecamera-b59f7.appspot.com',
+  messagingSenderId: '752024537605',
+  appId: '1:752024537605:web:1c14a676c6dca8cc6aea6c',
+  measurementId: 'G-3PK8NZZGEP'
+});
+const messaging = firebase.messaging();
+var token = messaging.getToken({vapidKey: 'BHgu6ZJ1uEM7VYHZbuuPJaTgJQlB6wT8llfJ_n0yOwLovQIxs4smKLbQm5_JhPz5wecdjw-qvHJCxBu3m2VhqxU'});
+console.log('got token: ', token);
+
+messaging.onMessage((payload) => {
+  console.log('Message received. ', payload);
+  // ...
+});
+
+messaging.onBackgroundMessage((payload) => {
+  console.log(
+    '[firebase-messaging-sw.js] Received background message ',
+    payload
+  );
+  // Customize notification here
+  const notificationTitle = 'Background Message';
+  const notificationOptions = {
+    body: 'Background Message body.',
+    icon: '/firebase-logo.png'
+  };
+
+  self.registration.showNotification(notificationTitle, notificationOptions);
+});
+
+
 self.addEventListener('install', function(event) {
     event.waitUntil(caches
         .open(CACHE_NAME)
