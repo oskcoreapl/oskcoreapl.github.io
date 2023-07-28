@@ -42,7 +42,7 @@ PWA Sample2 230725
             navigator.serviceWorker.register('sw.js').then(function(registration) {
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
                 messaging.useServiceWorker(registration);
-                messaging.requestPermission(alert: false).then(() => {
+                messaging.requestPermission().then(() => {
                     console.log("msg permitted.");
                     messaging.getToken().then(token => {
                         console.log(token);
