@@ -7,6 +7,7 @@ var urlsToCache = [
     '/camera.js',
 ];
 
+/*
 importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/8.10.1/firebase-messaging.js');
 
@@ -43,7 +44,7 @@ messaging.onBackgroundMessage((payload) => {
 
   self.registration.showNotification(notificationTitle, notificationOptions);
 });
-
+*/
 
 self.addEventListener('install', function(event) {
     event.waitUntil(caches
