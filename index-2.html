@@ -96,6 +96,50 @@ PWA Sample2 230725
     <button id="saveImage">画像保存</button>
 
 <p>
+    <button id="fileapi">ファイルAPI</button>
+    <script>
+      document.getElementById('fileapi').addEventListener('click', () => {
+        if (window.File) {
+          alert("File APIが実装されてます。");
+        } else {
+          alert("本ブラウザではFile APIが使えません");
+        }
+      });
+    </script>
+
+<p>
+    <input type="file" name="file" id="file">
+    <div id="result"></div>
+    <script>
+        var file = document.getElementById('file');
+        var result = document.getElementById('result');
+     
+        function loadLocalImage(e) {
+            // ファイル情報を取得
+            var fileData = e.target.files[0];
+            console.log(fileData); // 取得した内容の確認用
+     
+            // 画像ファイル以外は処理を止める
+            if(!fileData.type.match('image.*')) {
+                alert('画像を選択してください');
+                return;
+            }
+     
+            // FileReaderオブジェクトを使ってファイル読み込み
+            var reader = new FileReader();
+            // ファイル読み込みに成功したときの処理
+            reader.onload = function() {
+                var img = document.createElement('img');
+                img.src = reader.result;
+                result.appendChild(img);
+            }
+            // ファイル読み込みを実行
+            reader.readAsDataURL(fileData);
+        }
+        file.addEventListener('change', loadLocalImage, false);
+    </script>
+
+<p>
     <button id="confirm">push通知許可2</button>
     <script>
       document.getElementById('confirm').addEventListener('click', () => {
