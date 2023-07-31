@@ -69,33 +69,11 @@ function openCamera() {
 
 
 
-            var options = {
-                type: "saveFile",
-                suggestedName: "test.jpg"
-            };
-            chrome.fileSystem.chooseEntry(options, function(writableEntry) {
-                if (writableEntry) {
-                    writableEntry.createWriter(function(writer) {
-                        writer.onerror = function(e) {
-                            console.log(e);
-                        };
-                        writer.onwriteend = function() {
-                            if (writer.length == 0) {
-                                writer.write(blob);
-                            } else {
-                                console.log("Exporting done: " + writableEntry.name);
-                            }
-                        };
-                        writer.truncate(0);
-                    }, function(e) {
-                        console.log(e);
-                    });
-                }
-            });
 
 
 
-            navigator.webkitPersistentStorage.requestQuota (1024*1024, function(grantedBytes) {
+
+            navigator.webkitPersistentStorage.requestQuota (1024*1024*1024, function(grantedBytes) {
               console.log ('requestQuota: ', arguments);
               requestFS(grantedBytes);
             }, onError);
