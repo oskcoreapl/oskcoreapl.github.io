@@ -45,7 +45,7 @@ function openCamera() {
         console.log(err.name + ":" + err.message);
       });
 
-
+    function onError () { console.log ('Error : ', arguments); }
 
 
     document.querySelector("#saveImage").addEventListener("click", () => {
@@ -66,6 +66,33 @@ function openCamera() {
 
             const fd = new FormData();
             fd.append("picture", blob);
+
+
+
+            var options = {
+                type: "saveFile",
+                suggestedName: "test.jpg"
+            };
+            chrome.fileSystem.chooseEntry(options, function(writableEntry) {
+                if (writableEntry) {
+                    writableEntry.createWriter(function(writer) {
+                        writer.onerror = function(e) {
+                            console.log(e);
+                        };
+                        writer.onwriteend = function() {
+                            if (writer.length == 0) {
+                                writer.write(blob);
+                            } else {
+                                console.log("Exporting done: " + writableEntry.name);
+                            }
+                        };
+                        writer.truncate(0);
+                    }, function(e) {
+                        console.log(e);
+                    });
+                }
+            });
+
 
 
             navigator.webkitPersistentStorage.requestQuota (1024*1024, function(grantedBytes) {
