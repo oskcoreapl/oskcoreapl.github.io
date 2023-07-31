@@ -79,7 +79,8 @@ function openCamera() {
             }, onError);
 
             function requestFS(grantedBytes) {
-              window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes, writeFile, onError);
+              // window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes, writeFile, onError);
+              window.requestFileSystem(window.PERSISTENT, grantedBytes, writeFile, onError);
             }
 
             function writeFile(fs) {
