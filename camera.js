@@ -65,7 +65,7 @@ function openCamera() {
             }
 
             const fd = new FormData();
-            fd.append("picture", blob)
+            fd.append("picture", blob);
     
             // const param = {
             //     method: "POST",
@@ -86,7 +86,7 @@ function openCamera() {
             // .catch((error)=>{
             //     console.log('Error:', error)
             // });
-        }
+        });
     }
 
 }
