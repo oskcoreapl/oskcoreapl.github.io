@@ -100,7 +100,7 @@ function openCamera() {
                       fileWriter.write(blob);
                     }, onError);
                   }, onError);
-              }
+              });
             }
 
 
