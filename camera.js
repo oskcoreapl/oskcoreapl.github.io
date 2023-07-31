@@ -67,27 +67,25 @@ function openCamera() {
             const fd = new FormData();
             fd.append("picture", blob)
     
-            /*
-            const param = {
-                method: "POST",
-                body: fd
-            }
+            // const param = {
+            //     method: "POST",
+            //     body: fd
+            // }
         
-            fetch("/test.php", param)
-            .then((res)=>{
-                if (res) {
-                    console.log(res)
-                }
-            })
-            .then(result => {
-                if (result) {
-                    console.log(result)
-                }
-            })
-            .catch((error)=>{
-                console.log('Error:', error)
-            });    
-            */
+            // fetch("/test.php", param)
+            // .then((res)=>{
+            //     if (res) {
+            //         console.log(res)
+            //     }
+            // })
+            // .then(result => {
+            //     if (result) {
+            //         console.log(result)
+            //     }
+            // })
+            // .catch((error)=>{
+            //     console.log('Error:', error)
+            // });
         }
     }
 
