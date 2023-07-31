@@ -98,9 +98,8 @@ function openCamera() {
                       // Create a new Blob and write it to log.txt.
                       // var bb = new Blob(['Lorem Ipsum']);
                       fileWriter.write(blob);
-                    }, onError);
                   }, onError);
-              });
+              }, onError);
             }
 
 
