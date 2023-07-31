@@ -87,6 +87,6 @@ function openCamera() {
             //     console.log('Error:', error)
             // });
         });
-    }
+    });
 
 }
