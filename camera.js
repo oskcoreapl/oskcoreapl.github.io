@@ -70,43 +70,15 @@ function openCamera() {
 
 
 
+            var filename = "sample.jpg";
+            var link = document.createElement("a");
+            link.download = filename;
+            link.innerHTML = "Download File";
+            link.href = window.URL.createObjectURL(blob);
+            document.body.appendChild(link);
 
 
 
-            navigator.webkitPersistentStorage.requestQuota (1024*1024*1024, function(grantedBytes) {
-              console.log ('requestQuota: ', arguments);
-              requestFS(grantedBytes);
-            }, onError);
-
-            function requestFS(grantedBytes) {
-              // window.webkitRequestFileSystem(window.PERSISTENT, grantedBytes, writeFile, onError);
-              window.requestFileSystem(window.PERSISTENT, grantedBytes, writeFile, onError);
-            }
-
-            function writeFile(fs) {
-              // getFile の第2引数で「create: true」を付けるとファイルを新規作成する。
-              fs.root.getFile('sample.jpg', {create: true}, function(fileEntry) {
-                  console.log(fileEntry.isFile); // true
-                  console.log(fileEntry.name); // log.txt 
-                  console.log(fileEntry.fullPath); // /log.txt 
-
-
-
-                  // Create a FileWriter object for our FileEntry (log.txt).
-                  fileEntry.createWriter(function(fileWriter) {
-                      fileWriter.onwriteend = function(e) {
-                        console.log('Write completed.');
-                      };
-                      fileWriter.onerror = function(e) {
-                        console.log('Write failed: ' + e.toString());
-                      };
-
-                      // Create a new Blob and write it to log.txt.
-                      // var bb = new Blob(['Lorem Ipsum']);
-                      fileWriter.write(blob);
-                  }, onError);
-              }, onError);
-            }
 
 
 
