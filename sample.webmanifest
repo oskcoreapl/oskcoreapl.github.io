@@ -3,7 +3,7 @@
     "name": "PWAサンプルアプリケーション",
     "display": "standalone",
     "start_url": "index-2.html",
-    "gcm_sender_id": "752024537605",
+    "gcm_sender_id": "103953800507",
     "icons": [
         {
             "src": "images/icon-512.png",

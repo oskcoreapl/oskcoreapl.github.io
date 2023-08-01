@@ -58,15 +58,6 @@ function openCamera() {
         ctx.drawImage(v, 0, 0, c.width, c.height);
 
         c.toBlob(function(blob) {
-            var img = document.createElement("img");
-            url = URL.createObjectURL(blob);
-            img.onload = function() {
-                URL.revokeObjectURL(url);
-            }
-
-            const fd = new FormData();
-            fd.append("picture", blob);
-
 
 
 
@@ -76,12 +67,22 @@ function openCamera() {
             link.innerHTML = "Download File";
             link.href = window.URL.createObjectURL(blob);
             document.body.appendChild(link);
+            
+            // var blobUrl = window.URL.createObjectURL( filename ) ;
+            // document.body.innerHTML += '<a href="' + blobUrl + '" target="_blank"><img src="' + blobUrl + '"></a>' 
 
 
 
 
 
+            // var img = document.createElement("img");
+            // url = URL.createObjectURL(blob);
+            // img.onload = function() {
+            //     URL.revokeObjectURL(url);
+            // }
 
+            // const fd = new FormData();
+            // fd.append("picture", blob);
 
             // const param = {
             //     method: "POST",
